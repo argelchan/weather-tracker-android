@@ -19,6 +19,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        setProperty("archivesBaseName", "WeatherTracker_android_v$versionCode($versionName)")
+        buildConfigField("String", "API_BASE_URL", "\"\"")
     }
 
     buildTypes {
@@ -36,6 +38,23 @@ android {
     }
     kotlinOptions {
         jvmTarget = "11"
+    }
+    buildFeatures {
+        buildConfig = true
+    }
+    flavorDimensions.add("weatherTracker")
+    productFlavors {
+        create("develop") {
+            dimension = "weatherTracker"
+            versionNameSuffix = "-dev"
+            buildConfigField("String", "API_BASE_URL", "\"https://dev.com/api/\"")
+        }
+
+        create("production") {
+            dimension = "weatherTracker"
+            versionNameSuffix = "-prod"
+            buildConfigField("String", "API_BASE_URL", "\"https://prod.com/api/\"")
+        }
     }
 }
 
@@ -58,6 +77,11 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.gson)
     implementation(libs.gson)
+    implementation(libs.okhttp.logging.interceptor)
+    implementation(libs.kotlinx.serialization.json)
 
-
+    // DataBase
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
 }
