@@ -6,4 +6,11 @@
     </style>
 
     <style name="Theme.WeatherTraker" parent="Base.Theme.WeatherTraker" />
+
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">24sp</item>
+        <item name="fontFamily">@font/font_barlow</item>
+        <item name="android:fontFamily">@font/font_barlow</item>
+    </style>
+
 </resources>

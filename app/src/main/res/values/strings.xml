@@ -7,4 +7,7 @@
     <string name="failure_unauthorized">No has iniciado sesión</string>
     <string name="failure_problem_retry">Hubo un problema, intente nuevamente</string>
     <string name="failure_invalid_credentials">Credenciales inválidas</string>
+    <string name="text_title_toolbar_home">Home</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.serialization)
     kotlin("kapt")
     id("com.google.devtools.ksp")
+    id("kotlin-kapt")
 }
 
 android {
@@ -41,6 +42,8 @@ android {
     }
     buildFeatures {
         buildConfig = true
+        dataBinding = true
+        viewBinding = true
     }
     flavorDimensions.add("weatherTracker")
     productFlavors {
@@ -84,4 +87,8 @@ dependencies {
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
     ksp(libs.room.compiler)
+
+    // Navigation
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
 }
