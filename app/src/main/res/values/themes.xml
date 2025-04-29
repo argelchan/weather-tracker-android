@@ -1,16 +1,30 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.WeatherTraker" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowTransitionBackgroundFadeDuration">1000</item>
+        <item name="android:windowLightStatusBar">true</item>
+
     </style>
 
-    <style name="Theme.WeatherTraker" parent="Base.Theme.WeatherTraker" />
+    <style name="Theme.WeatherTraker" parent="Base.Theme.WeatherTraker">
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowTransitionBackgroundFadeDuration">1000</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
 
     <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">24sp</item>
         <item name="fontFamily">@font/font_barlow</item>
         <item name="android:fontFamily">@font/font_barlow</item>
+    </style>
+    <style name="TransparentDialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowMinWidthMajor">@android:dimen/dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item>
     </style>
 
 </resources>
