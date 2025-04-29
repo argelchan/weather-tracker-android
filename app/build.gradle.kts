@@ -6,8 +6,12 @@ plugins {
     kotlin("kapt")
     id("com.google.devtools.ksp")
     id("kotlin-kapt")
+    alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin)
 }
-
+secrets {
+    propertiesFileName = "secrets.properties"
+    defaultPropertiesFileName = "local.defaults.properties"
+}
 android {
     namespace = "com.argel.weathertraker"
     compileSdk = 35
@@ -20,7 +24,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        setProperty("archivesBaseName", "WeatherTracker_android_v$versionCode($versionName)")
+        setProperty("archivesBaseName", "WeatherTracker_Android_v$versionCode($versionName)")
         buildConfigField("String", "API_BASE_URL", "\"\"")
     }
 
@@ -68,6 +72,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.play.services.maps)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
