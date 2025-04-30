@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">Weather Traker</string>
+
+    // Failures
+    <string name="failure_db">No pudimos conectarnos a la base de datos</string>
+    <string name="failure_unauthorized">No has iniciado sesión</string>
+    <string name="failure_problem_retry">Hubo un problema, intente nuevamente</string>
+    <string name="failure_invalid_credentials">Credenciales inválidas</string>
+    <string name="text_title_toolbar_home">Home</string>
+    <string name="text_title_toolbar_weather">Clima</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="textAccept">Aceptar</string>
+    <string name="textCancel">Cancelar</string>
+    <string name="notice">Aviso</string>
+    <string name="empty"></string>
+    <string name="location_permission_denied">Permisos de ubicación denegados.</string>
+    <string name="text_title_toolbar_settings">Configuración</string>
+    <string name="searchCountry">Buscar ciudad</string>
+    <string name="failure_no_internet">Error de conexión</string>
+    <string name="failure_no_internet_alternative">WDD de conexión, verifique su internet</string>
+    <string name="loadUrlIcon">https://openweathermap.org/img/wn/%1$s@4x.png</string>
+    <string name="currentCountry">Ciudad actual</string>
+    <string name="emptyTxt">....</string>
 </resources>
