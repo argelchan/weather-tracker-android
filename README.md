@@ -2,6 +2,8 @@
 
 Es un proyecto enfocado en la visualización de datos del clima. 
 
+https://github.com/user-attachments/assets/c4e27704-8b45-4919-8c6f-f7d4719f10f8
+
 Incluye:
 
 1. Librerías básicas como: ViewModel, LiveData, Navigation Components, Retrofit, Hilt, Google Json, Coil, Lifecycle process.
