@@ -19,7 +19,7 @@ class PlaceRepositoryImpl @Inject constructor(
         placesClient.findAutocompletePredictions(request)
             .addOnSuccessListener { response ->
                 val result = response.autocompletePredictions.map {
-                    Suggestion(it.placeId, it.getFullText(null).toString())
+                    Suggestion(it.placeId, it.getPrimaryText(null).toString(), it.getSecondaryText(null).toString(), it.getFullText(null).toString())
                 }
                 cont.resume(Either.Right(result))
             }

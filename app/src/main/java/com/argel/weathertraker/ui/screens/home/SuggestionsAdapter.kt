@@ -25,6 +25,7 @@ class SuggestionsAdapter:
 
             fun bind(item: SuggestModel) {
                 binding.tvTitle.text = item.name
+                binding.tvDescription.text = item.description
                 itemView.setOnClickListener {
 
                 }

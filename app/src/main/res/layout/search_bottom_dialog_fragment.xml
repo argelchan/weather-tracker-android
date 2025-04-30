@@ -59,6 +59,8 @@
             android:layout_height="wrap_content"
             android:minHeight="550dp"
             tools:itemCount="5"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
             tools:listitem="@layout/item_location"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:orientation="vertical"
