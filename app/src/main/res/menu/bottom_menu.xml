@@ -6,7 +6,7 @@
         android:id="@+id/homeFragment"
         android:checked="true"
         android:enabled="true"
-        android:icon="@drawable/ic_flood_24"
+        android:icon="@drawable/ic_light_mode_24"
         android:orderInCategory="0"
         android:title="@string/text_title_toolbar_weather" />
 
