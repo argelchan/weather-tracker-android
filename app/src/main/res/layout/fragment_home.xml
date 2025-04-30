@@ -45,7 +45,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/populated"
+                                android:id="@+id/populated"
                             style="@style/Toolbar.BodyText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
                             android:paddingTop="4dp"
                             android:textSize="12sp"
                             android:textColor="@color/white"
-                            android:text="Dzonot Carretero" />
+                            android:text="@string/emptyTxt" />
 
                         <TextView
                             android:id="@+id/country"
@@ -64,7 +64,7 @@
                             android:paddingBottom="4dp"
                             android:textColor="@color/white"
                             android:textSize="10sp"
-                            android:text="México" />
+                            android:text="@string/emptyTxt" />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -102,7 +102,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:paddingHorizontal="2dp"
-                        android:textSize="12sp"
+                        android:textSize="13sp"
                         android:fontFamily="@font/font_barlow"
                         android:gravity="center_vertical"
                         android:layout_gravity="center_vertical"
