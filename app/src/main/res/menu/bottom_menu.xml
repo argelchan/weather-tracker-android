@@ -6,8 +6,16 @@
         android:id="@+id/homeFragment"
         android:checked="true"
         android:enabled="true"
-        android:icon="@drawable/ic_home_24"
+        android:icon="@drawable/ic_flood_24"
         android:orderInCategory="0"
-        android:title="@string/text_title_toolbar_home" />
+        android:title="@string/text_title_toolbar_weather" />
+
+    <item
+        android:id="@+id/settingsFragment"
+        android:checked="false"
+        android:enabled="true"
+        android:icon="@drawable/ic_settings_24"
+        android:orderInCategory="1"
+        android:title="@string/text_title_toolbar_settings" />
 
 </menu>

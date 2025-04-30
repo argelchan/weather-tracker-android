@@ -1,15 +1,20 @@
 package com.argel.weathertraker.core.presentation
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.argel.weathertraker.core.exception.Failure
-import kotlinx.coroutines.flow.MutableStateFlow
 
 abstract class BaseViewModel: ViewModel() {
-    var state: MutableStateFlow<BaseViewState?> = MutableStateFlow(null)
-    var failure: MutableStateFlow<Failure?> = MutableStateFlow(null)
+
+    internal val _state: MutableLiveData<BaseViewState> = MutableLiveData()
+    var state: LiveData<BaseViewState> = _state
+
+    private val _failure: MutableLiveData<Failure> = MutableLiveData()
+    var failure: LiveData<Failure> = _failure
 
     protected fun handleFailure(failure: Failure) {
-        this.failure.value = failure
-        state.value = BaseViewState.HideLoading
+        _failure.value = failure
+        _state.value = BaseViewState.HideLoading
     }
 }

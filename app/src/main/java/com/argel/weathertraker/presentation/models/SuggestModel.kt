@@ -1,7 +1,6 @@
 package com.argel.weathertraker.presentation.models
 
-data class GroupModel(
+data class SuggestModel(
     val id: String,
-    val collectionId: String,
     val name: String
 )

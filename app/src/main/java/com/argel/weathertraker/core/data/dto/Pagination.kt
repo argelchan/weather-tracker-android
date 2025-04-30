@@ -1,4 +1,4 @@
-package com.argel.weathertraker.core.data.models
+package com.argel.weathertraker.core.data.dto
 
 import com.google.gson.annotations.SerializedName
 

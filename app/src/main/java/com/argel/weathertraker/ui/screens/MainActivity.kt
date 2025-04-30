@@ -1,9 +1,11 @@
 package com.argel.weathertraker.ui.screens
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.View
 import android.widget.TextView
+import androidx.activity.SystemBarStyle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.ViewCompat
@@ -31,7 +33,10 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setBinding()
         baseNavController.setGraph(R.navigation.main_graph)
-        enableEdgeToEdge()
+        enableEdgeToEdge(
+            statusBarStyle = SystemBarStyle.auto(Color.WHITE, Color.WHITE)
+        )
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)

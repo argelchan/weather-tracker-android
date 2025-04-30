@@ -11,6 +11,7 @@ import com.argel.weathertraker.R
 import com.argel.weathertraker.core.presentation.BaseFragment
 import com.argel.weathertraker.databinding.FragmentHomeBinding
 import com.argel.weathertraker.ui.customs.informativeDialog.InformativeDialog
+import com.argel.weathertraker.ui.screens.home.SearchBottomDialogView
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -31,11 +32,20 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
     private lateinit var googleMap: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
+    override fun useBottomNav(): Boolean = true
 
     override fun setBinding(view: View) {
         binding = FragmentHomeBinding.bind(view)
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
+
+            mcvSearch.setOnClickListener {
+                SearchBottomDialogView(true).apply {
+                    setDismissedCallback {
+                        checkLocationPermissions()
+                    }
+                }.show(childFragmentManager, "SearchBottomDialogView")
+            }
         }
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
     }
