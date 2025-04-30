@@ -4,12 +4,17 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.argel.weathertraker.R
 import com.argel.weathertraker.core.presentation.BaseFragment
+import com.argel.weathertraker.data.dto.WeatherRequest
 import com.argel.weathertraker.databinding.FragmentHomeBinding
+import com.argel.weathertraker.presentation.models.SuggestModel
 import com.argel.weathertraker.ui.customs.informativeDialog.InformativeDialog
 import com.argel.weathertraker.ui.screens.home.SearchBottomDialogView
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -19,9 +24,12 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.WithFragmentBindings
 import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 @WithFragmentBindings
@@ -31,6 +39,7 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var googleMap: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private var searchDialog: SearchBottomDialogView? = null
 
     override fun useBottomNav(): Boolean = true
 
@@ -40,14 +49,40 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
             lifecycleOwner = viewLifecycleOwner
 
             mcvSearch.setOnClickListener {
-                SearchBottomDialogView(true).apply {
+                searchDialog = SearchBottomDialogView(true).apply {
                     setDismissedCallback {
-                        checkLocationPermissions()
+                        showInfo(it)
                     }
-                }.show(childFragmentManager, "SearchBottomDialogView")
+                }
+
+                searchDialog?.show(childFragmentManager, "SearchBottomDialogView")
             }
         }
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
+    }
+
+    private fun showInfo(suggest: SuggestModel?) {
+        Handler(Looper.getMainLooper()).postDelayed({
+            suggest?.let { item ->
+                WeatherBottomDialogView(true, WeatherRequest(
+                    id = item.id,
+                    country = item.name,
+                )).apply {
+                    setShowedCallback {
+                        searchDialog?.dismiss()
+                    }
+                    setMoveMapCallback {
+                        val currentLatLng = LatLng(it.lat, it.lon)
+                        googleMap.clear()
+                        googleMap.addMarker(MarkerOptions().position(currentLatLng).title(
+                            getString(
+                                R.string.currentCountry
+                            )))
+                        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 15f))
+                    }
+                }.show(childFragmentManager, "WeatherBottomDialogView")
+            }
+        }, 400)
     }
 
     private val locationPermissionRequest = registerForActivityResult(

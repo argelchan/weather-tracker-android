@@ -1,4 +1,4 @@
-package com.argel.weathertraker.core.data.dto
+package com.argel.weathertraker.data.dto
 
 import com.argel.weathertraker.presentation.models.SuggestModel
 

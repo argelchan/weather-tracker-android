@@ -1,7 +1,9 @@
 package com.argel.weathertraker.core.extension
 
 import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.Locale
+import java.util.TimeZone
 
 fun String.formatDate(
     desiredFormat: String,
@@ -17,4 +19,10 @@ fun String.formatDate(
         e.printStackTrace()
         null
     }
+}
+
+fun Long.toFormattedTime(): String {
+    val sdf = SimpleDateFormat("h:mm a", Locale.getDefault())
+    sdf.timeZone = TimeZone.getDefault()
+    return sdf.format(Date(this * 1000))
 }

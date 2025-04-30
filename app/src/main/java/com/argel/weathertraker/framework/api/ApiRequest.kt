@@ -5,11 +5,6 @@ import com.argel.weathertraker.core.functional.Either
 import com.argel.weathertraker.core.platform.NetworkHandler
 import retrofit2.Call
 
-/**
- * Created by Argel Chan on 06/11/2024.
- * didier.chan@ingenierosmafur.com
- */
-
 interface ApiRequest {
 
     fun <T, R> makeRequest(

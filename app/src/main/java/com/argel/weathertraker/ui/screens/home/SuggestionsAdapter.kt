@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.argel.weathertraker.databinding.ItemLocationBinding
 import com.argel.weathertraker.presentation.models.SuggestModel
 
-class SuggestionsAdapter:
+class SuggestionsAdapter(var onSuggestionClicked: (SuggestModel) -> Unit = {}):
     ListAdapter<SuggestModel, SuggestionsAdapter.SuggestionViewHolder>(DIFF) {
 
         companion object {
@@ -27,7 +27,7 @@ class SuggestionsAdapter:
                 binding.tvTitle.text = item.name
                 binding.tvDescription.text = item.description
                 itemView.setOnClickListener {
-
+                    onSuggestionClicked(item)
                 }
             }
         }

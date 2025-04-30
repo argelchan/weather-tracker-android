@@ -1,5 +1,6 @@
 package com.argel.weathertraker.ui.screens.home
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
 import androidx.core.widget.addTextChangedListener
@@ -10,6 +11,7 @@ import com.argel.weathertraker.core.extension.failure
 import com.argel.weathertraker.core.extension.observe
 import com.argel.weathertraker.core.presentation.BaseBottomSheetDialogFragment
 import com.argel.weathertraker.databinding.SearchBottomDialogFragmentBinding
+import com.argel.weathertraker.presentation.models.SuggestModel
 import com.argel.weathertraker.ui.customs.informativeDialog.InformativeDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -23,10 +25,11 @@ class SearchBottomDialogView(
 
     private lateinit var binding: SearchBottomDialogFragmentBinding
     private val adapter = SuggestionsAdapter()
-    private var dismissedCallback: () -> Unit = {}
-    fun setDismissedCallback(dismissedCallback: () -> Unit) {
+    private var dismissedCallback: (SuggestModel?) -> Unit = {}
+    fun setDismissedCallback(dismissedCallback: (SuggestModel?) -> Unit) {
         this.dismissedCallback = dismissedCallback
     }
+    private var selectedSuggestion: SuggestModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,6 +82,17 @@ class SearchBottomDialogView(
                     adapter.submitList(emptyList())
                 }
             })
+
+            adapter.onSuggestionClicked = {
+                selectedSuggestion = it
+                dismissedCallback(selectedSuggestion)
+                //dismiss()
+            }
         }
+    }
+
+    override fun onDismiss(dialog: DialogInterface) {
+        super.onDismiss(dialog)
+        //dismissedCallback(selectedSuggestion)
     }
 }

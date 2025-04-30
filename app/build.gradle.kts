@@ -54,13 +54,13 @@ android {
         create("develop") {
             dimension = "weatherTracker"
             versionNameSuffix = "-dev"
-            buildConfigField("String", "API_BASE_URL", "\"https://dev.com/api/\"")
+            buildConfigField("String", "API_BASE_URL", "\"https://api.openweathermap.org/data/2.5/\"")
         }
 
         create("production") {
             dimension = "weatherTracker"
             versionNameSuffix = "-prod"
-            buildConfigField("String", "API_BASE_URL", "\"https://prod.com/api/\"")
+            buildConfigField("String", "API_BASE_URL", "\"https://api.openweathermap.org/data/2.5/\"")
         }
     }
 }
@@ -100,4 +100,7 @@ dependencies {
     implementation(libs.play.services.maps)
     implementation(libs.play.services.location)
     implementation(libs.places)
+
+    // Coil
+    implementation(libs.coils)
 }

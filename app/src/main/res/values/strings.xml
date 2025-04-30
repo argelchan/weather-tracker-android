@@ -19,4 +19,6 @@
     <string name="searchCountry">Buscar ciudad</string>
     <string name="failure_no_internet">Error de conexión</string>
     <string name="failure_no_internet_alternative">WDD de conexión, verifique su internet</string>
+    <string name="loadUrlIcon">https://openweathermap.org/img/wn/%1$s@4x.png</string>
+    <string name="currentCountry">Ciudad actual</string>
 </resources>
